@@ -1,5 +1,6 @@
 <script>
 	import Project from './Project.svelte';
+	import {onMount} from 'svelte';
 
 	const project1 = {
 		name: 'My Project',
@@ -25,26 +26,31 @@
     techStack: 'stoplang, writescrolls',
     lookingFor: ['backend developers', 'pomadchin']
 	}
+
+	let projects = [project1, project2];
+
+	onMount(async () => {
+		const res = await fetch(`https://pitohui.org`);
+		projects = await res.json();
+	});
 </script>
 
 <main>
-	<Project {...project1}/>
-	<Project {...project2}/>
+	<div class="projects">
+		{#each projects as project}
+			<Project {...project}/>
+		{:else}
+			<p>Loading...</p>
+		{/each}
+	</div>
 </main>
 
 <style>
-	main {
+	main, div.projects {
 		text-align: center;
 		padding: 1em;
-		max-width: 240px;
+		max-width: 1024px;
 		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
 	}
 
 	@media (min-width: 640px) {
