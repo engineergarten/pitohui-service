@@ -1,10 +1,35 @@
 <script>
-	export let name;
+	import Project from './Project.svelte';
+
+	const project1 = {
+		name: 'My Project',
+    status: 'Active',
+    tags: ['finance', 'open source', 'commerce'],
+    description: 'bla bla',
+    createDttm: '10/12/2020',
+    links: ['https://tuda.shodi.com'],
+    team: ['Human j. Developer'],
+    analogs: [],
+    techStack: 'shocaml, shavascrolls',
+    lookingFor: ['frontend developer', 'sales', 'ceo', 'pomadchin']
+	}
+	const project2 = {
+		name: 'Her Project',
+    status: 'Active',
+    tags: ['finance', 'open source', 'commerce', 'beginner friendly'],
+    description: 'Mir nikogda ne budet prezhnim',
+    createDttm: '24/12/2020',
+    links: ['https://change.world.org'],
+    team: ['Catty Purr'],
+    analogs: [],
+    techStack: 'stoplang, writescrolls',
+    lookingFor: ['backend developers', 'pomadchin']
+	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Project {...project1}/>
+	<Project {...project2}/>
 </main>
 
 <style>
